@@ -1,0 +1,59 @@
+body{
+    background-image: linear-gradient( to right, #feb2c7,  #fe93af, #fe8c7e, #fea36d, #f1bb31, #ffcf3d, #ffd453);
+}
+header{
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-top: 6%;
+    margin-bottom: 1%;
+    display: flex;
+}
+.posicaoTitulo{
+    text-align: center;
+    margin-top: 5%;
+}
+.posicaoTexto{
+    text-align: center;
+    margin-bottom: 5%;
+}
+.quadrado{
+    text-align: center;
+    margin-top: 1%;
+    margin-left: 10%;   
+    margin-right: 10%;
+    margin-bottom: 4%;
+    background-color: #ffffff;
+}
+.quadradoCadastro{
+    text-align: center;
+    margin-top: 1%;
+    margin-left: 36%;   
+    margin-right: 36%;
+    margin-bottom: 10%;
+    padding: 2%;
+    border-radius: 10px;
+    background-color: #ffffff;
+}
+.titulo{
+    margin-top: 0%;
+}
+main{
+    display: flex;
+    margin-right: 2%;
+}
+.textos{
+    display: inline;
+}
+.textos2{
+    display: flex;
+}
+.opcoesCadastro{
+    display: inline;
+}
+input{
+    margin-top: 1.5%;
+    margin-bottom: 2%;
+}
+article{
+    text-indent: 6%;
+}

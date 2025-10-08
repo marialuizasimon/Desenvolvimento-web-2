@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Usuário</title>
+    <link rel="stylesheet" href="bonito.css">
+  </head>
+  <body>
+    <div class="posicaoTitulo">
+      <p style="color: aliceblue; font-size: 500%; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;"><b>Memora</b></p>
+    </div>
+    <div class="posicaoTexto">
+      <p style="color: aliceblue; font-size: 120%; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman, serif'"><em>Seu lugar seguro<br>
+      para todas as lembranças &#x1F496</em></p>
+    </div>
+
+    <div class="quadradoCadastro">
+      <form id="idCadastro">
+        <h1 style="color: #e3446e; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Cadastro</h1>
+        <label for="nomeUsuario">Nome de Usuario:</label><br>
+        <input type="text" id="nomeUsuario" required><br>
+
+        <label for="senhaUsuario">Senha:</label><br>
+        <input type="text" id="senhaUsuario" step="0.01" required><br>
+
+        <button type="submit">Cadastrar</button>
+      </form>
+    </div>
+
+    <script>
+      const cadastro = document.getElementById("idCadastro");
+
+      async function cadastrarUsuario(nomeUsuario, senhaUsuario) {
+        try {
+          // Seleciona a rota a ser usada
+          const resposta = await fetch('http://localhost:3000/cadProduto', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            // Encaminha os dados que vieram como parametro no corpo do arquivo JSON
+            body: JSON.stringify({
+              nome_produto: nome_prod,
+              preco_produto: preco_prod
+            })
+        });
+
+        // A variável dados recebe um objeto produto
+        const dados = await resposta.json();
+
+        if (resposta.ok) {
+          console.log("O produto foi cadastrado com sucesso")
+        } else {
+          switch (resposta.status) {
+            case 400:
+              console.warn('⚠️ Produto não encontrado');
+              break;
+            case 401:
+              console.warn('⚠️ Produto não encontrado');
+              break;
+            case 500:
+              console.warn('💥 Erro interno no servidor. Tente novamente mais tarde.');
+              break;
+            default:
+              console.warn(`❗ Erro inesperado: ${resposta.status}`);
+          }
+
+          console.debug('Detalhes do erro:', dados.mensagem || dados);
+        }
+      } catch (erro) {
+        console.error('🚫 Erro ao tentar buscar o produto:', erro.message);
+      }}
+
+
+      form.addEventListener("submit", function(event) {
+        event.preventDefault(); // impede o reload da página
+
+        const nome = document.getElementById("nome").value;
+        const preco = parseFloat(document.getElementById("preco").value);
+
+        nomeUpper = nome.toUpperCase();
+        // cadastra o produto no banco de dados
+        cadastrarProduto(nomeUpper, preco);
+
+        // cria o item da lista
+        const li = document.createElement("li");
+        li.textContent = `${nomeUpper} - R$ ${preco.toFixed(2)}`;
+
+        // adiciona na lista
+        lista.appendChild(li);
+
+        // limpa os campos
+        form.reset();
+      });
+    </script>
+  </body>
+</html>
