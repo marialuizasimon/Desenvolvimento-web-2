@@ -1,4 +1,5 @@
-//ROTA POST - Cadastro do professor
+//Código para o "cadastro.html".
+
 const cors = require('cors');
 
 const express = require('express');
@@ -10,8 +11,10 @@ app.use(express.json());
 app.use(cors())
 
 const PORT = process.env.PORT || 3000;
-// Deixar ingual
+//Deixar ingual.
 
+
+//ROTA POST - login do Usuário.
 app.post('/loginUsuarios', (req, res) => {
   const { nomeUsuario, senhaUsuario } = req.body;
 
@@ -26,10 +29,10 @@ app.post('/loginUsuarios', (req, res) => {
     }
 
     if (results.length === 0) {
-      return res.status(401).json({ error: 'Dados inválidos.' }); // nao encontrou no bd
+      return res.status(401).json({ error: 'Dados inválidos.' }); // nao encontrou no Banco de Dados.
     }
 
-    // Login bem-sucedido
+    //Login bem-sucedido.
     const user = results[0];
     res.json({
       message: 'Login bem-sucedido!',
@@ -42,7 +45,8 @@ app.post('/loginUsuarios', (req, res) => {
   });
 });
 
-//ROTA POST - Cadastro de novos usuarios
+
+//ROTA POST - Cadastro de novos usuarios.
 app.post('/cadastrarUsuarios', (req, res) => { 
   const { nomeUsuario, senhaUsuario } = req.body;
 
@@ -63,8 +67,8 @@ app.post('/cadastrarUsuarios', (req, res) => {
   });
 });
 
-// Inicializa o servidor
+
+//Inicializa o servidor. Também deixar ingual.
 app.listen(PORT, () => {
   console.log(`Servidor rodando na porta ${PORT}`);
 });
-// Também deixar ingual
